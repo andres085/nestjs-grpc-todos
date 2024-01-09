@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package todo;
+
+service TodosService {
+    rpc CreateTodo(CreateTodoDto) returns (Todo){}
+    rpc FindAllTodos(TodoEmpty) returns (Todos){}
+    rpc FindOneTodo(FindOneTodoDto) returns (Todo){}
+    rpc UpdateTodo(UpdateTodoDto) returns (Todo){}
+    rpc DeleteTodo(FindOneTodoDto) returns (Todo){}
+}
+
+message TodoEmpty {}
+
+message Todo {
+    string id = 1;
+    string title = 2;
+    enum Status {
+        PENDING = 0;
+        IN_PROGRESS = 1;
+        COMPLETED = 2;
+    }
+    Status status = 3;
+}
+
+message Todos {
+    repeated Todo todos = 1;
+}
+
+message RelatedUser {
+    string id = 1;
+    string username = 2;
+    string password = 3;
+    string email = 4;
+}
+
+message CreateTodoDto {
+    RelatedUser user = 1;
+    string title = 2;
+}
+
+message FindOneTodoDto {
+    string id = 1;
+}
+
+message UpdateTodoDto {
+    string id = 1;
+    string title = 2;
+}
