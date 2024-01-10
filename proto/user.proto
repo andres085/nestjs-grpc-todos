@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package user;
 
+import "todo.proto";
+
 service UsersService {
     rpc FindAllUsers(UserEmpty) returns (Users){}
     rpc FindOneUser(FindOneUserDto) returns (User){}
@@ -26,6 +28,7 @@ message User {
     string username = 2;
     string password = 3;
     string email = 4;
+    repeated todo.Todo todos = 5;
 }
 
 message Users {

@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
+import { Todo } from "./todo";
 
 export const protobufPackage = "user";
 
@@ -22,6 +23,7 @@ export interface User {
   username: string;
   password: string;
   email: string;
+  todos: Todo[];
 }
 
 export interface Users {
