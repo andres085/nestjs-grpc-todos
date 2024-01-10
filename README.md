@@ -1,73 +1,98 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Microservices-Based Todo Management System
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Welcome to my Microservices-Based Todo Management System, a project meticulously crafted for deepening my understanding of modern backend development techniques and microservices architecture. This system comprises two primary microservices:
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+**API Gateway (REST API):** This microservice, built using NestJs, serves as the entry point for client interactions. It handles user registrations, logins, and forwards requests related to todo management to the gRPC server. Its RESTful design ensures easy and familiar access for clients.
 
-## Description
+**gRPC Server:** Dedicated to todo management, this server is responsible for handling all operations related to todos, such as creation, retrieval, update, and deletion. Implemented using gRPC within NestJs, it offers efficient, type-safe, and scalable data exchange.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+The database of choice for this project is Sqlite, known for its simplicity and effectiveness in handling data, especially in practice projects. This system is designed not only as a practical application of NestJs and gRPC in a microservices architecture but also as an exploration into effective data management and user authentication strategies using Sqlite.
 
-## Installation
+## Project Setup
+
+1- Clone the project from the repository
 
 ```bash
-$ yarn install
+## With SSH
+git clone git@github.com:andres085/nestjs-grpc-todos.git
+
+## With HTTPS
+git clone https://github.com/andres085/nestjs-grpc-todos.git
 ```
 
-## Running the app
+2- Install the dependencies
 
 ```bash
-# development
-$ yarn run start
+## With Yarn
+yarn
 
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+## With NPM
+npm i
 ```
 
-## Test
+3- Start the microservices in different terminals
 
 ```bash
-# unit tests
-$ yarn run test
+## Terminal 1
+yarn start:dev api-gateway
 
-# e2e tests
-$ yarn run test:e2e
+## Terminal 2
+yarn start:dev todo-app
 
-# test coverage
-$ yarn run test:cov
+4- Endpoints
+- POST: /users/register
+- POST: /users/login
+- GET: /users
+- GET: /users/:id
+- PATCH: /users/:id
+- DELETE: /users/:id
+- POST: /todos
+- GET: /todos
+- GET: /todos/:id
+- PATCH: /todos/:id
+- DELETE: /todos/:id
 ```
 
-## Support
+- User register body example:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```json
+{
+  "username": "User",
+  "password": "User123",
+  "email": "user@mail.com"
+}
+```
 
-## Stay in touch
+- User login body example:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```json
+{
+  "password": "User123",
+  "email": "user@mail.com"
+}
+```
 
-## License
+- Create Todo body example:
 
-Nest is [MIT licensed](LICENSE).
+```json
+{
+  "title": "Third todo"
+}
+```
+
+- Update Todo body example:
+
+```json
+{
+  "id": "5f69259a-d923-4524-a3ff-716273bc6a58",
+  "title": "Second Todo Updated v2"
+}
+```
+
+## Technologies Used
+
+- NestJs
+- gRPC
+- JWT
+- TypeORM
+- Sqlite
