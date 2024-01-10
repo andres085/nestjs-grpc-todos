@@ -15,7 +15,9 @@ The database of choice for this project is Sqlite, known for its simplicity and 
 ```bash
 ## With SSH
 git clone git@github.com:andres085/nestjs-grpc-todos.git
+```
 
+```bash
 ## With HTTPS
 git clone https://github.com/andres085/nestjs-grpc-todos.git
 ```
@@ -25,7 +27,9 @@ git clone https://github.com/andres085/nestjs-grpc-todos.git
 ```bash
 ## With Yarn
 yarn
+```
 
+```bash
 ## With NPM
 npm i
 ```
@@ -35,11 +39,15 @@ npm i
 ```bash
 ## Terminal 1
 yarn start:dev api-gateway
+```
 
+```bash
 ## Terminal 2
 yarn start:dev todo-app
+```
 
 4- Endpoints
+
 - POST: /users/register
 - POST: /users/login
 - GET: /users
@@ -51,43 +59,42 @@ yarn start:dev todo-app
 - GET: /todos/:id
 - PATCH: /todos/:id
 - DELETE: /todos/:id
-```
 
 - User register body example:
 
-```json
-{
-  "username": "User",
-  "password": "User123",
-  "email": "user@mail.com"
-}
-```
+  ```json
+  {
+    "username": "User",
+    "password": "User123",
+    "email": "user@mail.com"
+  }
+  ```
 
 - User login body example:
 
-```json
-{
-  "password": "User123",
-  "email": "user@mail.com"
-}
-```
+  ```json
+  {
+    "password": "User123",
+    "email": "user@mail.com"
+  }
+  ```
 
 - Create Todo body example:
 
-```json
-{
-  "title": "Third todo"
-}
-```
+  ```json
+  {
+    "title": "Third todo"
+  }
+  ```
 
 - Update Todo body example:
 
-```json
-{
-  "id": "5f69259a-d923-4524-a3ff-716273bc6a58",
-  "title": "Second Todo Updated v2"
-}
-```
+  ```json
+  {
+    "id": "5f69259a-d923-4524-a3ff-716273bc6a58",
+    "title": "Second Todo Updated v2"
+  }
+  ```
 
 ## Technologies Used
 
@@ -96,3 +103,7 @@ yarn start:dev todo-app
 - JWT
 - TypeORM
 - Sqlite
+
+## Author
+
+Andrés Martinez
